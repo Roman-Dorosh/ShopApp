@@ -1,0 +1,11 @@
+CREATE TABLE Users (Id INT PRIMARY KEY IDENTITY(1,1), Username NVARCHAR(50) UNIQUE NOT NULL, PasswordHash NVARCHAR(100) NOT NULL);
+
+CREATE TABLE Products (Id INT PRIMARY KEY IDENTITY(1,1), Name NVARCHAR(100) NOT NULL, Description NVARCHAR(MAX), Price DECIMAL(10,2) NOT NULL, Discount DECIMAL(5,2) DEFAULT 0);
+
+CREATE TABLE Cart (Id INT PRIMARY KEY IDENTITY(1,1), UserId INT FOREIGN KEY REFERENCES Users(Id), ProductId INT FOREIGN KEY REFERENCES Products(Id));
+
+INSERT INTO Products (Name, Description, Price, Discount) VALUES (N'Смартфон X', N'Мощный смартфон', 25000, 10), (N'Ноутбук Pro', N'Для работы и игр', 60000, 15), (N'Наушники', N'Беспроводные', 3000, 5), (N'Чехол', N'Защитный', 1000, 0), (N'Зарядка', N'Быстрая', 1500, 0);
+
+Имя сервера: (localdb)\MSSQLLocalDB
+
+Имя базы: ShopDB
